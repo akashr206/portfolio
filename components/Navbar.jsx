@@ -1,33 +1,128 @@
 "use client";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import ThemeToggle from "./ui/ThemeToggle";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
     const ref = useRef(null);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     const { scrollYProgress } = useScroll({
         target: ref,
         offset: ["start start", "end end"],
     });
-    const width = useTransform(scrollYProgress, [0, 0.2], [1024, 600]);
+
+    const width = useTransform(
+        scrollYProgress,
+        [0, 0.2],
+        ["min(1024px, calc(100vw - 2rem))", "min(600px, calc(100vw - 2rem))"]
+    );
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
+
     return (
-        <header className="fixed top-0 left-0 right-0 mx-auto py-4 z-50 w-screen">
-            <motion.nav style={{ width }} className="flex mx-auto items-center h-12 rounded-full justify-between w-full bg-card/70 backdrop-blur-sm p-4">
+        <header className="fixed top-0 left-0 right-0 mx-auto py-4 z-50 w-screen px-4">
+            <motion.nav
+                style={{ width }}
+                className={cn(
+                    "flex mx-auto items-center h-12 justify-between bg-card/70 backdrop-blur-sm p-4 relative",
+                    isMenuOpen ? "rounded-t-xl" : "rounded-full"
+                )}
+            >
                 <div className="flex items-center gap-2">
-                    <span className="text-lg font-semibold">
-                        AR
-                    </span>
+                    <span className="text-lg font-semibold">AR</span>
                 </div>
-                <div className="flex items-center gap-4">
-                    {["Home", "Projects", "Skills", "Contact"].map((nav)=>(
-                        <span key={nav} className="text-sm font-light">
-                            <Link href={`#${nav}`}>{nav}</Link>
+
+                <div className="hidden md:flex items-center gap-4">
+                    {["Home", "Projects", "Skills", "Contact"].map((nav) => (
+                        <span
+                            key={nav}
+                            className="text-sm font-light hover:text-primary transition-colors"
+                        >
+                            <Link href={`#${nav.toLowerCase()}`}>{nav}</Link>
                         </span>
                     ))}
                 </div>
-                <ThemeToggle />
+
+                <div className="md:hidden flex items-center gap-2">
+                    <ThemeToggle />
+                    <button
+                        onClick={toggleMenu}
+                        className="p-1 hover:bg-muted rounded-md transition-colors"
+                        aria-label="Toggle menu"
+                    >
+                        <motion.div animate={{ alignItems: isMenuOpen ? "center"  : "end", gap: isMenuOpen ? "0"  : "6px"}} className="flex flex-col justify-center">
+                            <motion.div
+                                animate={{ rotateZ: isMenuOpen ? "45deg"  : "0deg"}}
+                                className="w-6 h-[2px] rounded-full bg-foreground"
+                            ></motion.div>
+                            <motion.div
+                                animate={{ rotateZ: isMenuOpen ? "-45deg"  : "0deg", width :  isMenuOpen ? "24px"  : "16px"}}
+                                className="w-4 h-[2px] rounded-full bg-foreground"
+                            ></motion.div>
+                        </motion.div>
+                    </button>
+                </div>
+
+                <div className="hidden md:block">
+                    <ThemeToggle />
+                </div>
             </motion.nav>
+
+            <motion.div
+                initial={false}
+                animate={{
+                    opacity: isMenuOpen ? 1 : 0,
+                    y: isMenuOpen ? 0 : -10,
+                    pointerEvents: isMenuOpen ? "auto" : "none",
+                }}
+                style={{ width }}
+                transition={{ duration: 0.2 }}
+                className="md:hidden absolute top-16 left-4 right-4 bg-card/90 backdrop-blur-sm mx-auto rounded-xl rounded-t-none shadow-lg overflow-hidden"
+            >
+                <div className="py-2">
+                    {["Home", "Projects", "Skills", "Contact"].map(
+                        (nav, index) => (
+                            <motion.div
+                                key={nav}
+                                initial={false}
+                                animate={{
+                                    opacity: isMenuOpen ? 1 : 0,
+                                    x: isMenuOpen ? 0 : -20,
+                                }}
+                                transition={{
+                                    duration: 0.2,
+                                    delay: isMenuOpen ? index * 0.05 : 0,
+                                }}
+                            >
+                                <Link
+                                    href={`#${nav.toLowerCase()}`}
+                                    onClick={closeMenu}
+                                    className="block px-4 py-3 text-sm font-light hover:bg-muted transition-colors"
+                                >
+                                    {nav}
+                                </Link>
+                            </motion.div>
+                        )
+                    )}
+                </div>
+            </motion.div>
+
+            {isMenuOpen && (
+                <div
+                    className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm -z-10"
+                    onClick={closeMenu}
+                />
+            )}
         </header>
     );
 };

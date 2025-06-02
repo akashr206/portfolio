@@ -1,8 +1,14 @@
 "use client";
 import Badge from "./ui/Badge";
+import { useRef } from "react";
+import GradientText from "./text/GradientText/GradientText";
 const Hero = () => {
+    const contRef = useRef(null);
     return (
-        <section id="hero" className="flex py-16 flex-col items-center h-screen relative">
+        <section
+            id="hero"
+            className="flex py-16 flex-col items-center h-screen relative"
+        >
             <div className="relative flex flex-col items-center justify-center w-full">
                 <span className="my-2.5">
                     <Badge text="Greetings" />
@@ -47,6 +53,16 @@ const Hero = () => {
                         </linearGradient>
                     </defs>
                 </svg>
+                <div
+                    ref={contRef}
+                    className="flex flex-col items-center text-center md:text-xl max-w-2xl justify-center"
+                >
+                    <p className="text-zinc-800 mx-4 dark:text-zinc-200">
+                        I’m a passionate developer who loves turning ideas into
+                        real, usable projects. I enjoy building smooth,
+                        creative, and meaningful experiences on the web.
+                    </p>
+                </div>
             </div>
         </section>
     );
