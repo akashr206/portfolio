@@ -1,14 +1,17 @@
 "use client";
 import Badge from "./ui/Badge";
+import Square from "@/components/Squares/Squares";
 import { useRef } from "react";
-import GradientText from "./text/GradientText/GradientText";
 const Hero = () => {
     const contRef = useRef(null);
     return (
         <section
             id="hero"
-            className="flex py-16 flex-col items-center h-screen relative"
+            className="flex py-16 flex-col items-center h-[85vh] pt-40 relative"
         >
+            <div className="absolute top-0 inset-0 opacity-30 left-0 w-full">
+                <Square speed={0.2} direction="up" />
+            </div>
             <div className="relative flex flex-col items-center justify-center w-full">
                 <span className="my-2.5">
                     <Badge text="Greetings" />

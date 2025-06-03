@@ -13,7 +13,7 @@ const Main = ({ children }) => {
         requestAnimationFrame(raf);
     }, []);
 
-    return <main className="my-20">{children}</main>;
+    return <main>{children}</main>;
 };
 
 export default Main;
