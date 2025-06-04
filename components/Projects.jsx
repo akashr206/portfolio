@@ -2,8 +2,7 @@
 import Badge from "./ui/Badge";
 import { motion } from "framer-motion";
 import { useRef } from "react";
-import { Github, ChevronRight } from "lucide-react";
-import { ExternalLink } from "lucide-react";
+import { Github, ChevronRight, ExternalLink } from "lucide-react";
 
 const projectsData = [
     {
@@ -50,35 +49,45 @@ const projectsData = [
 
 const Projects = () => {
     return (
-        <section className="flex min-h-screen p-16">
-            <div className="sticky top-16 h-fit flex flex-col max-w-md gap-1">
+        <section className="flex min-h-screen max-md:flex-col max-md:py-16 p-4 md:p-8 lg:p-16">
+            <div className="md:sticky top-16 h-fit flex flex-col max-md:items-center max-md:mx-auto max-md:text-center max-w-md gap-1">
                 <Badge text={"Projects"} />
-                <h2 className="text-3xl font-semibold max-w-sm">
+                <h2 className="lg:text-3xl text-2xl font-semibold max-w-sm">
                     Explore my{" "}
                     <span className="text-fuchsia-500"> recent works</span>
                 </h2>
-                <p>
+                <p className="">
                     A collection of my personal and collaborative projects —
                     exploring ideas, solving problems, and building things that
                     matter.
                 </p>
             </div>
-            <div className="ml-4 p-4 flex w-full">
+            <div className="p-4 flex w-full">
                 <motion.div
                     initial="hidden"
-                    className="flex gap-4 justify-center flex-wrap"
+                    className="grid max-[1200px]:grid-cols-1 grid-cols-2 gap-4 justify-center"
                 >
                     {projectsData.map((project) => (
+                        
                         <div
                             key={project.id}
-                            className="rounded-lg overflow-hidden cursor-pointer flex flex-col max-w-[360px] bg-zinc-50 dark:bg-card/90 "
+                            className="rounded-lg overflow-hidden border flex flex-col w-full lg: lg:max-w-[ 360px] bg-zinc-50 dark:bg-card/90 "
                         >
                             <div className="h-[220px] relative">
-                                <span className="absolute inset-0 bg-linear-to-b from-transparent to-black/50"></span>
+                                <span className="absolute transition-all duration-200 opacity-0 flex items-end hover:opacity-100 inset-0 bg-linear-to-b from-transparent to-black/60">
+                                    <div className="p-4 z-10 flex shrink-0 gap-2">
+                                        <a href={project.githubUrl} className=" p-2 rounded-full hover:bg-muted/80 bg-muted text-foreground cursor-pointer">
+                                            <Github className="w-5 h-5"></Github>
+                                        </a>
+                                        <a href={project.liveUrl} className=" p-2 rounded-full hover:bg-muted/80 bg-muted text-foreground cursor-pointer">
+                                            <ExternalLink className="w-5 h-5"></ExternalLink>
+                                        </a>
+                                    </div>
+                                </span>
                                 <img
                                     src={project.imageUrl}
                                     alt=""
-                                    className="h-full w-auto object-cover"
+                                    className="h-full w-full object-center object-cover"
                                 />
                             </div>
                             <div className="flex p-6 flex-col gap-2">
