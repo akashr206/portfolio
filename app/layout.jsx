@@ -17,7 +17,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={`${poppins.variable} h-[100vw] bg-background antialiased`}>
+            <body className={`${poppins.variable} h-[100vw] bg-background overflow-x-hidden antialiased`}>
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"

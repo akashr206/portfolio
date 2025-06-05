@@ -1,0 +1,12 @@
+import React from 'react'
+
+const Contact = () => {
+  return (
+    <section className="flex min-h-screen max-md:flex-col max-md:py-16 p-4 md:p-8 lg:p-16">
+        
+    </section>
+           
+  )
+}
+
+export default Contact

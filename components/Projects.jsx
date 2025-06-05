@@ -56,7 +56,7 @@ const Projects = () => {
                     Explore my{" "}
                     <span className="text-fuchsia-500"> recent works</span>
                 </h2>
-                <p className="">
+                <p>
                     A collection of my personal and collaborative projects —
                     exploring ideas, solving problems, and building things that
                     matter.
@@ -65,13 +65,13 @@ const Projects = () => {
             <div className="p-4 flex w-full">
                 <motion.div
                     initial="hidden"
-                    className="grid max-[1200px]:grid-cols-1 grid-cols-2 gap-4 justify-center"
+                    className="grid ml-auto max-[1200px]:grid-cols-1  place-items-center grid-cols-2 gap-4 justify-center"
                 >
                     {projectsData.map((project) => (
                         
                         <div
                             key={project.id}
-                            className="rounded-lg overflow-hidden border flex flex-col w-full lg: lg:max-w-[ 360px] bg-zinc-50 dark:bg-card/90 "
+                            className="rounded-lg overflow-hidden border flex flex-col w-full lg:max-w-[380px] h-full bg-zinc-50 dark:bg-card/90 "
                         >
                             <div className="h-[220px] relative">
                                 <span className="absolute transition-all duration-200 opacity-0 flex items-end hover:opacity-100 inset-0 bg-linear-to-b from-transparent to-black/60">
