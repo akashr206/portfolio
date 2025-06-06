@@ -90,7 +90,7 @@ const Projects = () => {
                                     className="h-full w-full object-center object-cover"
                                 />
                             </div>
-                            <div className="flex p-6 flex-col gap-2">
+                            <div className="flex p-6 pb-3 flex-col gap-2">
                                 <h3 className="text-xl font-semibold">
                                     {project.title}
                                 </h3>
@@ -106,6 +106,9 @@ const Projects = () => {
                                             {tag}
                                         </span>
                                     ))}
+                                </div>
+                                <div className="lg:hidden text-sm ml-1.5 mt-3">
+                                    <a href={project.liveUrl} className="flex items-center gap-1"> View Project <ChevronRight className="w-4.5 h-4.5"></ChevronRight></a>
                                 </div>
                             </div>
                         </div>
