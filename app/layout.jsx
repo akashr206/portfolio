@@ -3,6 +3,7 @@ import "./globals.css";
 import Main from "@/components/Main";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "next-themes";
+import { Toaster } from "sonner";
 const poppins = Poppins({
     variable: "--font-poppins",
     subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function RootLayout({ children }) {
                     defaultTheme="system"
                     enableSystem
                 >
+                    <Toaster richColors></Toaster>
                     <Navbar />
                     <Main>{children}</Main>
                 </ThemeProvider>
