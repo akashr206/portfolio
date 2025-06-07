@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Mail, User, MessageSquare, Send } from "lucide-react";
+import Beams from "./Beams/Beams";
+import { ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
 export default function SendMessage() {
     const [formData, setFormData] = useState({
@@ -52,7 +54,11 @@ export default function SendMessage() {
     };
 
     return (
-        <div className="max-w-md w-full mx-auto bg-card/50 backdrop-blur-xl p-8 rounded-lg border">
+        <div className="max-w-md w-full text-white mx-auto bg-card/50 backdrop-blur-xl p-8 rounded-lg border">
+            <div className="absolute rounded-lg overflow-hidden dark:opacity-45 -z-50 inset-0">
+                <Beams lightColor="#D946EF" rotation={45}></Beams>
+            </div>
+
             <div className="text-center mb-6">
                 <h2 className="text-2xl font-bold">
                     Send <span className="text-fuchsia-500">Message</span>
@@ -151,14 +157,14 @@ export default function SendMessage() {
                     type="button"
                     onClick={handleSubmit}
                     disabled={isSubmitting}
-                    className="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white disabled:bg-fuchsia-400 font-medium py-2 px-4 rounded-md transition duration-200 flex items-center justify-center space-x-2"
+                    className="w-full bg-fuchsia-600 hover:bg-fuchsia-700 text-white disabled:bg-fuchsia-400 font-medium py-2 px-4 rounded-md transition duration-200 cursor-pointer flex items-center justify-center gap-1 group"
                 >
                     {isSubmitting ? (
                         <div className="animate-spin rounded-full h-4 w-4 border-b-2 "></div>
                     ) : (
                         <>
-                            <Send className="h-4 w-4" />
                             <span>Send Message</span>
+                            <ArrowUpRight className="w-5 h-5 transition-all duration-300 group-hover:rotate-45" />
                         </>
                     )}
                 </button>

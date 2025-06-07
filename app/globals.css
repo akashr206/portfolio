@@ -140,3 +140,7 @@
     }
   }
 }
+
+body{
+  overflow-x: hidden;
+}
