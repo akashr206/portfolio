@@ -49,7 +49,7 @@ const projectsData = [
 
 const Projects = () => {
     return (
-        <section className="flex min-h-screen max-md:flex-col max-md:py-16 p-4 md:p-8 lg:p-16">
+        <section id="projects" className="flex min-h-screen max-md:flex-col max-md:py-16 p-4 md:p-8 lg:p-16">
             <div className="md:sticky top-16 h-fit flex flex-col max-md:items-center max-md:mx-auto max-md:text-center max-w-md gap-1">
                 <Badge text={"Projects"} />
                 <h2 className="lg:text-3xl text-2xl font-semibold max-w-sm">

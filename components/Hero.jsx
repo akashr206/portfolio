@@ -6,7 +6,7 @@ const Hero = () => {
     const contRef = useRef(null);
     return (
         <section
-            id="hero"
+            id="home"
             className="flex py-16 flex-col items-center h-[85vh] pt-40 relative"
         >
             <div className="absolute top-0 inset-0 opacity-30 left-0 w-full">
