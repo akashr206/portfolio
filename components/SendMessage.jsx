@@ -54,7 +54,7 @@ export default function SendMessage() {
     };
 
     return (
-        <div className="max-w-md w-full text-white mx-auto bg-card/50 backdrop-blur-xl p-8 rounded-lg border">
+        <div className="max-w-md w-[calc(100%-35px)] relative text-white mx-auto bg-card/50 backdrop-blur-xl p-8 rounded-lg border">
             <div className="absolute rounded-lg overflow-hidden dark:opacity-45 -z-50 inset-0">
                 <Beams lightColor="#D946EF" rotation={45}></Beams>
             </div>

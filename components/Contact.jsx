@@ -64,11 +64,11 @@ const Contact = () => {
         <section
             ref={ref}
             id="contact"
-            className="flex flex-col h-[300vh] relative px-4 py-16 md:py-32 lg:py-48"
+            className="flex flex-col h-[300vh] relative px-4 py-12 md:py-32 lg:py-48"
         >
             <div
                 ref={containerRef}
-                className="sticky top-20 w-full h-[600px] flex items-center justify-start overflow-hidden"
+                className="sticky top-20 inset-0 h-[600px] flex items-center justify-start overflow-hidden"
             >
                 <motion.h1
                     ref={textRef}

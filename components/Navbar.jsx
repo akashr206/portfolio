@@ -55,7 +55,6 @@ const Navbar = () => {
                     {["Home", "Projects", "Skills", "Contact"].map((nav) => {
                         const id = nav.toLowerCase();
                         const isActive = id == activeSection;
-                        console.log(activeSection);
                         return (
                             <span
                                 key={nav}
@@ -65,7 +64,11 @@ const Navbar = () => {
                                 )}
                             >
                                 {isActive && (
-                                    <motion.span initial={{opacity : 0, scale : 0}} animate={{opacity : 1, scale : 1}} className="h-2 w-2 bg-fuchsia-500 rounded-full mt-[3px]"></motion.span>
+                                    <motion.span
+                                        initial={{ opacity: 0, scale: 0 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="h-2 w-2 bg-fuchsia-500 rounded-full mt-[3px]"
+                                    ></motion.span>
                                 )}
                                 <button
                                     className="cursor-pointer"
@@ -129,28 +132,41 @@ const Navbar = () => {
             >
                 <div className="py-2">
                     {["Home", "Projects", "Skills", "Contact"].map(
-                        (nav, index) => (
-                            <motion.div
-                                key={nav}
-                                initial={false}
-                                animate={{
-                                    opacity: isMenuOpen ? 1 : 0,
-                                    x: isMenuOpen ? 0 : -20,
-                                }}
-                                transition={{
-                                    duration: 0.2,
-                                    delay: isMenuOpen ? index * 0.05 : 0,
-                                }}
-                            >
-                                <Link
-                                    href={`#${nav.toLowerCase()}`}
-                                    onClick={closeMenu}
-                                    className="block px-4 py-3 text-sm font-light hover:bg-muted transition-colors"
+                        (nav, index) => {
+                            const id = nav.toLowerCase();
+                            const isActive = id == activeSection;
+
+                            return (
+                                <motion.div
+                                    key={nav}
+                                    initial={false}
+                                    animate={{
+                                        opacity: isMenuOpen ? 1 : 0,
+                                        x: isMenuOpen ? 0 : -20,
+                                    }}
+                                    transition={{
+                                        duration: 0.2,
+                                        delay: isMenuOpen ? index * 0.05 : 0,
+                                    }}
                                 >
-                                    {nav}
-                                </Link>
-                            </motion.div>
-                        )
+                                    {isActive && (
+                                        <motion.span
+                                            initial={{ opacity: 0, scale: 0 }}
+                                            animate={{ opacity: 1, scale: 1 }}
+                                            className="h-2 w-2 bg-fuchsia-500 rounded-full mt-[3px]"
+                                        ></motion.span>
+                                    )}
+                                    <button
+                                        className="cursor-pointer"
+                                        onClick={() =>
+                                            scrollToSection(id.toLowerCase())
+                                        }
+                                    >
+                                        {nav}
+                                    </button>
+                                </motion.div>
+                            );
+                        }
                     )}
                 </div>
             </motion.div>
