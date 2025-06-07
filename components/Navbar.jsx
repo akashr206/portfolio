@@ -65,7 +65,7 @@ const Navbar = () => {
                                 )}
                             >
                                 {isActive && (
-                                    <span className="h-2 w-2 bg-fuchsia-500 rounded-full mt-[3px]"></span>
+                                    <motion.span initial={{opacity : 0, scale : 0}} animate={{opacity : 1, scale : 1}} className="h-2 w-2 bg-fuchsia-500 rounded-full mt-[3px]"></motion.span>
                                 )}
                                 <button
                                     className="cursor-pointer"

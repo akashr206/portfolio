@@ -1,4 +1,6 @@
-import React from 'react'
+"use client"
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const Contact = () => {
   return (
