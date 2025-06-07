@@ -70,7 +70,7 @@ const Projects = () => {
                     className="grid ml-auto max-[1200px]:grid-cols-1  place-items-center grid-cols-2 gap-4 justify-center"
                 >
                     {projectsData.map((project) => (
-                        <Project project={project}/>
+                        <Project key={project.id} project={project}/>
                     ))}
                 </motion.div>
             </div>
