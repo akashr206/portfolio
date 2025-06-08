@@ -2,13 +2,15 @@
 import Badge from "./ui/Badge";
 import Square from "@/components/Squares/Squares";
 import { useRef } from "react";
+import { Meteors } from "./ui/meteors";
 const Hero = () => {
     const contRef = useRef(null);
     return (
         <section
             id="home"
-            className="flex py-16 flex-col items-center h-[85vh] pt-40 relative"
+            className="flex py-16 flex-col overflow-x-hidden items-center h-[85vh] pt-40 relative"
         >
+            <Meteors></Meteors>
             <div className="absolute top-0 inset-0 opacity-30 left-0 w-full">
                 <Square speed={0.2} direction="up" />
             </div>

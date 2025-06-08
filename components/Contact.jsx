@@ -79,7 +79,7 @@ const Contact = () => {
                 </motion.h1>
             </div>
 
-            <div className="absolute w-full bottom-[50vh] translate-y-1/2">
+            <div className="absolute w-[calc(100%-32px)] bottom-[50vh] translate-y-1/2">
                 <SendMessage> </SendMessage>
             </div>
         </section>

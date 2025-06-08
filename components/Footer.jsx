@@ -22,7 +22,7 @@ export default function Footer() {
                             className="hover:text-fuchsia-400 transition"
                             aria-label="GitHub"
                         >
-                            <Github className="w-6 h-6" />
+                            <Github className="w-6 h-6 text-foreground" />
                         </a>
                         <a
                             href="https://linkedin.com/"
@@ -31,14 +31,14 @@ export default function Footer() {
                             className="hover:text-fuchsia-400 transition"
                             aria-label="LinkedIn"
                         >
-                            <Linkedin className="w-6 h-6" />
+                            <Linkedin className="w-6 h-6 text-foreground" />
                         </a>
                         <a
                             href="mailto:akashr6514@gmail.com"
                             className="hover:text-fuchsia-400 transition"
                             aria-label="Email"
                         >
-                            <Mail className="w-6 h-6" />
+                            <Mail className="w-6 h-6 text-foreground" />
                         </a>
                     </div>
                     <p className="text-xs text-muted-foreground select-none">

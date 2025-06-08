@@ -45,7 +45,7 @@ const Skills = () => {
             id="skills"
             className="relative items-center flex min-h-screen flex-col max-md:py-16 p-4 md:p-8 h-[250vh] lg:p-16"
         >
-            <motion.div className="sticky top-22 h-[500px] lg:h-[700px] w-full md:w-[700px] mx-auto flex items-center justify-center flex-col gap-16 lg:gap-16">
+            <motion.div className="sticky overflow-hidden top-22 h-[500px] lg:h-[700px] w-full md:w-[700px] mx-auto flex items-center justify-center flex-col gap-16 lg:gap-16">
                 <div className="text-center flex flex-col items-center gap-2">
                     <Badge text="Skills" />
                     <h2 className="text-2xl lg:text-3xl font-semibold">

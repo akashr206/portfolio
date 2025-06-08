@@ -3,7 +3,6 @@ import "./globals.css";
 import Main from "@/components/Main";
 import Navbar from "@/components/Navbar";
 import { ThemeProvider } from "next-themes";
-import { Toaster } from "sonner";
 const poppins = Poppins({
     variable: "--font-poppins",
     subsets: ["latin"],
@@ -18,13 +17,14 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className={`${poppins.variable} h-[100vw] bg-background overflow-x-hidden antialiased`}>
+            <body
+                className={`${poppins.variable} h-[100vw] bg-background overflow-x-hidden antialiased`}
+            >
                 <ThemeProvider
                     attribute="class"
                     defaultTheme="system"
                     enableSystem
                 >
-                    <Toaster richColors></Toaster>
                     <Navbar />
                     <Main>{children}</Main>
                 </ThemeProvider>
