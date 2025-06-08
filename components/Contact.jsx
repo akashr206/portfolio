@@ -33,10 +33,6 @@ const Contact = () => {
                 } else {
                     setTranslateDistance(Math.abs(overflowAmount) / 2);
                 }
-
-                console.log("Text width:", textWidth);
-                console.log("Container width:", containerWidth);
-                console.log("Distance to move:", translateDistance);
             }
         };
 
