@@ -23,7 +23,7 @@ export default function Footer() {
                             <Github className="w-5 h-5  transition" />
                         </a>
                         <a
-                            href="https://linkedin.com/"
+                            href="https://www.linkedin.com/in/akash-r-55496631b/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="p-2 rounded-md hover:bg-accent transition  text-foreground hover:text-fuchsia-400"
