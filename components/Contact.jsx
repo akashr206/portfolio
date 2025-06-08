@@ -2,6 +2,8 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import SendMessage from "./SendMessage";
+import { AuroraBackground } from "./ui/aurora-background";
+import { BackgroundBeams } from "./ui/background-beams";
 
 const Contact = () => {
     const ref = useRef(null);
@@ -64,15 +66,16 @@ const Contact = () => {
         <section
             ref={ref}
             id="contact"
-            className="flex flex-col h-[300vh] relative px-4 py-12 md:py-32 lg:py-48"
+            className="flex flex-col h-[360vh] relative px-4 py-12 md:py-32 lg:py-48"
         >
+            <BackgroundBeams className={"absolute inset-0"}></BackgroundBeams>
             <div
                 ref={containerRef}
                 className="sticky top-20 inset-0 h-[600px] flex items-center justify-start overflow-hidden"
             >
                 <motion.h1
                     ref={textRef}
-                    className="text-[120px] lg:text-[160px] xl:text-[200px] 2xl:text-[240px] font-semibold leading-tight whitespace-nowrap flex-shrink-0"
+                    className="text-[120px] transition duration-200 ease-linear lg:text-[160px] xl:text-[200px] 2xl:text-[240px] font-semibold leading-tight whitespace-nowrap flex-shrink-0"
                     style={{ x }}
                 >
                     Let's Connect and Build Something Awesome

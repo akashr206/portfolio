@@ -3,6 +3,8 @@ import { useScroll, motion, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Badge from "./ui/Badge";
 import useMobile from "@/hooks/useMobile";
+import { ShootingStars } from "./ui/shooting-stars";
+import { StarsBackground } from "./ui/stars-background";
 
 const skillSet = [
     { src: "/HTML.svg", name: "HTML" },
@@ -37,15 +39,18 @@ const Skills = () => {
     const rotate = useTransform(scrollYProgress, [0.45, 1], ["0deg", "180deg"]);
     const rev = useTransform(scrollYProgress, [0.45, 1], ["360deg", "180deg"]);
     const curveFactor = useTransform(scrollYProgress, [0.2, 0.45], [0, 1]);
-    const scale = useTransform(scrollYProgress, [0.4, 0.55], [0, 1])
-    const opacity = useTransform(scrollYProgress, [0.4, 0.55], [0.5, 1])
+    const scale = useTransform(scrollYProgress, [0.4, 0.55], [0, 1]);
+    const opacity = useTransform(scrollYProgress, [0.4, 0.55], [0.5, 1]);
     return (
         <section
             ref={ref}
             id="skills"
             className="relative items-center flex min-h-screen flex-col max-md:py-16 p-4 md:p-8 h-[250vh] lg:p-16"
         >
-            <motion.div className="sticky overflow-hidden top-22 h-[500px] lg:h-[700px] w-full md:w-[700px] mx-auto flex items-center justify-center flex-col gap-16 lg:gap-16">
+            <StarsBackground></StarsBackground>
+            <ShootingStars></ShootingStars>
+            <span className="absolute  inset-0"></span>
+            <motion.div className="sticky overflow-hidden top-22 h-[550px] md:h-[740px] w-full md:w-[700px] mx-auto flex items-center justify-center flex-col">
                 <div className="text-center flex flex-col items-center gap-2">
                     <Badge text="Skills" />
                     <h2 className="text-2xl lg:text-3xl font-semibold">
@@ -62,11 +67,14 @@ const Skills = () => {
                     style={{ rotate }}
                     className="h-full w-full flex items-center justify-center"
                 >
-                  <motion.div style={{opacity, scale, rotate : rev}} className="p-2 bg-foreground rounded-full">
-                    <div className="md:w-32 md:h-32 h-28 w-28 flex font-semibold items-center justify-center text-lg text-white rounded-full bg-fuchsia-500">
-                      <p>My Skills</p>
-                    </div>
-                  </motion.div>
+                    <motion.div
+                        style={{ opacity, scale, rotate: rev }}
+                        className="p-2 bg-foreground rounded-full"
+                    >
+                        <div className="md:w-32 md:h-32 h-28 w-28 flex font-semibold items-center justify-center text-lg text-white rounded-full bg-fuchsia-500">
+                            <p>My Skills</p>
+                        </div>
+                    </motion.div>
                     {skillSet.map((skill, i) => {
                         const row = Math.floor(i / itemsPerRow);
                         const col = i % itemsPerRow;
@@ -103,7 +111,10 @@ const Skills = () => {
                                 <motion.span
                                     initial={{ opacity: 0, y: 5 }}
                                     animate={{ opacity: 0 }}
-                                    whileHover={{ opacity: isMobile ? 0 : 1, y: 0 }}
+                                    whileHover={{
+                                        opacity: isMobile ? 0 : 1,
+                                        y: 0,
+                                    }}
                                     transition={{ duration: 0.3 }}
                                     className="absolute pt-[76px] text-sm text-center px-2 py-1 bg-background/0  text-foreground z-10"
                                 >

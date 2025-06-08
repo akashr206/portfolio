@@ -128,9 +128,9 @@ const Navbar = () => {
                 }}
                 style={{ width }}
                 transition={{ duration: 0.2 }}
-                className="md:hidden absolute top-16 left-4 right-4 bg-card/90 backdrop-blur-sm mx-auto rounded-xl rounded-t-none shadow-lg overflow-hidden"
+                className="md:hidden absolute top-16 left-4 pb-4 pt-2 right-4 bg-card/90 backdrop-blur-sm mx-auto rounded-xl rounded-t-none shadow-lg overflow-hidden"
             >
-                <div className="py-2">
+                <div className="p-2 flex flex-col gap-3">
                     {["Home", "Projects", "Skills", "Contact"].map(
                         (nav, index) => {
                             const id = nav.toLowerCase();
@@ -148,16 +148,17 @@ const Navbar = () => {
                                         duration: 0.2,
                                         delay: isMenuOpen ? index * 0.05 : 0,
                                     }}
+                                    className="flex items-center gap-1.5"
                                 >
                                     {isActive && (
-                                        <motion.span
+                                        <motion.div
                                             initial={{ opacity: 0, scale: 0 }}
                                             animate={{ opacity: 1, scale: 1 }}
-                                            className="h-2 w-2 bg-fuchsia-500 rounded-full mt-[3px]"
-                                        ></motion.span>
+                                            className="h-2 w-2 shrink-0 bg-fuchsia-500 rounded-full mt-[3px]"
+                                        ></motion.div>
                                     )}
                                     <button
-                                        className="cursor-pointer"
+                                        className={cn("cursor-pointer", !isActive && "ml-3.5 font-light")}
                                         onClick={() =>
                                             scrollToSection(id.toLowerCase())
                                         }

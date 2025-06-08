@@ -3,6 +3,7 @@ import Badge from "./ui/Badge";
 import Square from "@/components/Squares/Squares";
 import { useRef } from "react";
 import { Meteors } from "./ui/meteors";
+import { motion } from "framer-motion";
 const Hero = () => {
     const contRef = useRef(null);
     return (
@@ -18,11 +19,52 @@ const Hero = () => {
                 <span className="my-2.5">
                     <Badge text="Greetings" />
                 </span>
-                <h1 className="text-5xl font-semibold ">
-                    Hello <span className="text-fuchsia-500">Visitor</span>
+                <h1 className="text-5xl font-semibold flex gap-3 ">
+                    <motion.div
+                        initial={{ y: -10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{
+                            duration: 0.3,
+                            ease: "linear",
+                        }}
+                    >
+                        Hello{" "}
+                    </motion.div>
+
+                    <motion.span
+                        initial={{ filter: "blur(10px)" }}
+                        animate={{ filter: "blur(0px)" }}
+                        transition={{
+                            duration: 0.3,
+                            ease: "linear",
+                        }}
+                        className="text-fuchsia-500"
+                    >
+                        Visitor
+                    </motion.span>
                 </h1>
-                <h3 className="text-2xl font-semibold ">
-                    <span className="text-fuchsia-500">I'm</span> Akash R
+                <h3 className="text-2xl flex gap-1.5 font-semibold ">
+                    <motion.span
+                        initial={{ filter: "blur(10px)" }}
+                        animate={{ filter: "blur(0px)" }}
+                        transition={{
+                            duration: 0.3,
+                            ease: "linear",
+                        }}
+                        className="text-fuchsia-500"
+                    >
+                        I'm
+                    </motion.span>{" "}
+                    <motion.div
+                        initial={{ y: 10, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{
+                            duration: 0.3,
+                            ease: "linear",
+                        }}
+                    >
+                        Akash R
+                    </motion.div>{" "}
                 </h3>
                 <svg
                     className="blur-[1px] w-full h-[100px]"

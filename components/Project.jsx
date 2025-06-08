@@ -20,12 +20,14 @@ const Project = ({ project }) => {
                     <div className="p-4 z-10 flex shrink-0 gap-2">
                         <a
                             href={project.githubUrl}
+                            target="_blank"
                             className=" p-2 rounded-full hover:bg-muted/80 bg-muted text-foreground cursor-pointer"
                         >
                             <Github className="w-5 h-5"></Github>
                         </a>
                         <a
                             href={project.liveUrl}
+                            target="_blank"
                             className=" p-2 rounded-full hover:bg-muted/80 bg-muted text-foreground cursor-pointer"
                         >
                             <ExternalLink className="w-5 h-5"></ExternalLink>
@@ -55,6 +57,7 @@ const Project = ({ project }) => {
                 <div className="lg:hidden text-sm ml-1.5 mt-3">
                     <a
                         href={project.liveUrl}
+                        target="_blank"
                         className="flex items-center gap-1"
                     >
                         {" "}
