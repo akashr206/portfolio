@@ -2,7 +2,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import SendMessage from "./SendMessage";
-import { AuroraBackground } from "./ui/aurora-background";
 import { BackgroundBeams } from "./ui/background-beams";
 
 const Contact = () => {

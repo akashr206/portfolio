@@ -4,7 +4,6 @@ import { useRef } from "react";
 import Badge from "./ui/Badge";
 import useMobile from "@/hooks/useMobile";
 import { ShootingStars } from "./ui/shooting-stars";
-import { StarsBackground } from "./ui/stars-background";
 
 const skillSet = [
     { src: "/HTML.svg", name: "HTML" },
@@ -19,7 +18,7 @@ const skillSet = [
     { src: "/React-Dark.svg", name: "React" },
     { src: "/Postman.svg", name: "Postman" },
     { src: "/Vite-Dark.svg", name: "Vite" },
-    { src: "/VSCode-Dark.svg", name: "VS Code" },
+    { src: "/Tailwind.svg", name: "Tailwind CSS" },
     { src: "/CPP.svg", name: "C++" },
 ];
 
@@ -47,7 +46,6 @@ const Skills = () => {
             id="skills"
             className="relative items-center flex min-h-screen flex-col max-md:py-16 p-4 md:p-8 h-[250vh] lg:p-16"
         >
-            <StarsBackground></StarsBackground>
             <ShootingStars></ShootingStars>
             <span className="absolute  inset-0"></span>
             <motion.div className="sticky overflow-hidden top-22 h-[550px] md:h-[740px] w-full md:w-[700px] mx-auto flex items-center justify-center flex-col">
