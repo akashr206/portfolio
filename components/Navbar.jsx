@@ -19,7 +19,7 @@ const Navbar = () => {
 
     const width = useTransform(
         scrollYProgress,
-        [0, 0.2],
+        [0, 0.05],
         ["min(1024px, calc(100vw - 2rem))", "min(600px, calc(100vw - 2rem))"]
     );
 

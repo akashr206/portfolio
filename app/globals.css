@@ -125,6 +125,10 @@
   }
 }
 
+body{
+  overflow-x: hidden;
+}
+
 @property --border-angle {
   syntax: "<angle>";
   inherits: false;
@@ -141,9 +145,6 @@
   }
 }
 
-body{
-  overflow-x: hidden;
-}
 
 @theme inline {
   --animate-meteor-effect: meteor 5s linear infinite;
