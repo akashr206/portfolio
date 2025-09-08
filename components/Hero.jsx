@@ -4,6 +4,9 @@ import Square from "@/components/Squares/Squares";
 import { useRef } from "react";
 import { Meteors } from "./ui/meteors";
 import { motion } from "framer-motion";
+import { Button } from "./ui/button";
+import { ArrowUpRight, Github, Linkedin } from "lucide-react";
+import Link from "next/link";
 const Hero = () => {
     const contRef = useRef(null);
     return (
@@ -109,6 +112,37 @@ const Hero = () => {
                         real, usable projects. I enjoy building smooth,
                         creative, and meaningful experiences on the web.
                     </p>
+                </div>
+                <div className="mt-3 flex flex-col gap-2">
+                    <Button className={"bg-fuchsia-500 text-white"}>
+                        <a
+                            target="_blank"
+                            className="flex gap-2 items-center"
+                            href="https://drive.google.com/drive/folders/1HzTsm0LCTq9skZ-0y5gILBqj52vgSn4Q"
+                        >
+                            Resume <ArrowUpRight></ArrowUpRight>
+                        </a>
+                    </Button>
+                    <div className="flex gap-2 justify-between">
+                        <Button variant={"secondary"} className={"border"}>
+                            <a
+                                target="_blank"
+                                href={"https://github.com/akashr206"}
+                            >
+                                <Github />
+                            </a>
+                        </Button>
+                        <Button variant={"secondary"} className={"border"}>
+                            <a
+                                target="_blank"
+                                href={
+                                    "https://www.linkedin.com/in/akash-r-55496631b/"
+                                }
+                            >
+                                <Linkedin />
+                            </a>
+                        </Button>
+                    </div>
                 </div>
             </div>
         </section>

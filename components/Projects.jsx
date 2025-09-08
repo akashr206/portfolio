@@ -59,7 +59,7 @@ const Projects = () => {
                     <span className="text-fuchsia-500"> recent works</span>
                 </h2>
                 <p>
-                    A collection of my personal and collaborative projects —
+                    A collection of my personal and collaborative projects -
                     exploring ideas, solving problems, and building things that
                     matter.
                 </p>

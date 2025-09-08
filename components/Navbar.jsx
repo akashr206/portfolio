@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 const Navbar = () => {
     const ref = useRef(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const sections = ["home", "projects", "skills", "contact"];
+    const sections = ["home", "projects", "skills", "education", "contact"];
     const activeSection = useActiveSection(sections);
 
     const { scrollYProgress } = useScroll({
@@ -43,7 +43,7 @@ const Navbar = () => {
             <motion.nav
                 style={{ width }}
                 className={cn(
-                    "flex mx-auto items-center h-12 justify-between bg-card/70 backdrop-blur-sm p-4 relative",
+                    "flex mx-auto items-center h-12 border justify-between bg-card/70 backdrop-blur-sm p-4 relative",
                     isMenuOpen ? "rounded-t-xl" : "rounded-full"
                 )}
             >
@@ -52,8 +52,10 @@ const Navbar = () => {
                 </div>
 
                 <div className="hidden md:flex items-center gap-4">
-                    {["Home", "Projects", "Skills", "Contact"].map((nav) => {
+                    {["Home", "Projects", "Skills", "Education", "Contact"].map((nav) => {
                         const id = nav.toLowerCase();
+                        console.log(activeSection);
+                        
                         const isActive = id == activeSection;
                         return (
                             <span
@@ -131,7 +133,7 @@ const Navbar = () => {
                 className="md:hidden absolute top-16 left-4 pb-4 pt-2 right-4 bg-card/90 backdrop-blur-sm mx-auto rounded-xl rounded-t-none shadow-lg overflow-hidden"
             >
                 <div className="p-2 flex flex-col gap-3">
-                    {["Home", "Projects", "Skills", "Contact"].map(
+                    {["Home", "Projects", "Skills", "Education", "Contact"].map(
                         (nav, index) => {
                             const id = nav.toLowerCase();
                             const isActive = id == activeSection;
@@ -158,10 +160,14 @@ const Navbar = () => {
                                         ></motion.div>
                                     )}
                                     <button
-                                        className={cn("cursor-pointer", !isActive && "ml-3.5 font-light")}
-                                        onClick={() =>
-                                            scrollToSection(id.toLowerCase())
-                                        }
+                                        className={cn(
+                                            "cursor-pointer",
+                                            !isActive && "ml-3.5 font-light"
+                                        )}
+                                        onClick={() => {
+                                            scrollToSection(id.toLowerCase());
+                                            setIsMenuOpen(false);
+                                        }}
                                     >
                                         {nav}
                                     </button>

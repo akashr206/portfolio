@@ -13,10 +13,10 @@ const Project = ({ project }) => {
         <div
             ref={ref}
             key={project.id}
-            className="rounded-lg overflow-hidden border flex flex-col w-full lg:max-w-[380px] h-full bg-zinc-50 dark:bg-card/90 "
+            className="rounded-lg overflow-hidden group border flex flex-col w-full lg:max-w-[380px] h-full bg-zinc-50 dark:bg-card/90 "
         >
             <div className="h-[220px] relative">
-                <span className="absolute transition-all duration-200 opacity-0 flex items-end hover:opacity-100 inset-0 bg-linear-to-b from-transparent to-black/60">
+                <span className="absolute transition-all duration-200 opacity-0 flex items-end group-hover:opacity-100 inset-0 bg-linear-to-b from-transparent to-black/60">
                     <div className="p-4 z-10 flex shrink-0 gap-2">
                         <a
                             href={project.githubUrl}
@@ -54,15 +54,20 @@ const Project = ({ project }) => {
                         </span>
                     ))}
                 </div>
-                <div className="lg:hidden text-sm ml-1.5 mt-3">
+                <div className="lg:hidden flex gap-4  text-sm ml-1.5 mt-3">
+                    <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        className="flex items-center gap-1"
+                    >
+                        <Github className=" rounded-md p-2 border h-9 w-9"></Github>
+                    </a>
                     <a
                         href={project.liveUrl}
                         target="_blank"
                         className="flex items-center gap-1"
                     >
-                        {" "}
-                        View Project{" "}
-                        <ChevronRight className="w-4.5 h-4.5"></ChevronRight>
+                        <ExternalLink className=" rounded-md p-2 border h-9 w-9"></ExternalLink>
                     </a>
                 </div>
             </div>
