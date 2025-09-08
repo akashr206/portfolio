@@ -114,7 +114,7 @@ const Hero = () => {
                     </p>
                 </div>
                 <div className="mt-3 flex flex-col gap-2">
-                    <Button className={"bg-fuchsia-500 text-white"}>
+                    <Button className={"bg-fuchsia-500 hover:bg-fuchsia-600 text-white"}>
                         <a
                             target="_blank"
                             className="flex gap-2 items-center"
