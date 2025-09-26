@@ -25,6 +25,26 @@ const projectsData = [
         liveUrl: "https://mahira.vercel.app",
     },
     {
+        id: 6,
+        title: "Arise (CodeFury)",
+        description:
+            "A platform to preserve traditional Indian art forms by giving local artists exposure and connecting them with art lovers and buyers.",
+        tags: ["Next.js", "MongoDB", "Cloudinary", "Gemini API"],
+        imageUrl: "/codefury.png",
+        githubUrl: "https://github.com/akashr206/Arise-Codefury",
+        liveUrl: "https://arise-codefury.vercel.app",
+    },
+    {
+        id: 5,
+        title: "Bug Hunters",
+        description:
+            "A modern business website with smooth animations, professional UI, and clear call-to-actions for customers.",
+        tags: ["Next.js", "Tailwind CSS", "Framer Motion", "Type Script"],
+        imageUrl: "/bug-hunters.png",
+        githubUrl: "https://github.com/akashr206/Bussiness-Pro",
+        liveUrl: "https://businessproo.vercel.app",
+    },
+    {
         id: 3,
         title: "Peek Sort",
         description:
@@ -70,7 +90,7 @@ const Projects = () => {
                     className="grid ml-auto max-[1200px]:grid-cols-1  place-items-center grid-cols-2 gap-4 justify-center"
                 >
                     {projectsData.map((project) => (
-                        <Project key={project.id} project={project}/>
+                        <Project key={project.id} project={project} />
                     ))}
                 </motion.div>
             </div>
