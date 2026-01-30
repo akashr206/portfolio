@@ -5,6 +5,16 @@ import Project from "./Project";
 
 const projectsData = [
     {
+        id: 4,
+        title: "Macroz",
+        description:
+            "An unified platform to master DSA with visualizers, interactive quizzes, and a structured syllabus.",
+        tags: ["Next.js", "MongoDB", "Piston API", "Framer Motion"],
+        imageUrl: "/macroz.png",
+        githubUrl: "https://github.com/akashr206/MacroZ",
+        liveUrl: "https://macrozz.vercel.app",
+    },
+    {
         id: 1,
         title: "Yukthi - AI Course Generator",
         description:
@@ -53,16 +63,6 @@ const projectsData = [
         imageUrl: "/peek.png",
         githubUrl: "https://github.com/akashr206/PeekSort",
         liveUrl: "https://peek-sort.vercel.app",
-    },
-    {
-        id: 4,
-        title: "UVCE Confessions",
-        description:
-            "A confessions website where uvce students can anonymously share their thoughts and secrets.",
-        tags: ["React.js", "MongoDB", "Captcha", "Express.js"],
-        imageUrl: "/confession.png",
-        githubUrl: "https://github.com/akashr206/ConfessionsFrontend",
-        liveUrl: "https://uvce-confessions.vercel.app",
     },
 ];
 

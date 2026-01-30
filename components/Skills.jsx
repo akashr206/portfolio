@@ -1,6 +1,6 @@
 "use client";
 import { useScroll, motion, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import Badge from "./ui/Badge";
 import useMobile from "@/hooks/useMobile";
 import { ShootingStars } from "./ui/shooting-stars";
@@ -8,9 +8,9 @@ import { ShootingStars } from "./ui/shooting-stars";
 const skillSet = [
     { src: "/HTML.svg", name: "HTML" },
     { src: "/CSS.svg", name: "CSS" },
-    { src: "/JavaScript.svg", name: "JavaScript" },
+    { src: "/JavaScript.svg", name: "JS" },
     { src: "/Python-Dark.svg", name: "Python" },
-    { src: "/ExpressJS-Dark.svg", name: "Express.js" },
+    { src: "/ExpressJS-Dark.svg", name: "Express" },
     { src: "/Github-Dark.svg", name: "GitHub" },
     { src: "/MongoDB.svg", name: "MongoDB" },
     { src: "/NextJS-Dark.svg", name: "Next.js" },
@@ -18,7 +18,7 @@ const skillSet = [
     { src: "/React-Dark.svg", name: "React" },
     { src: "/Postman.svg", name: "Postman" },
     { src: "/Vite-Dark.svg", name: "Vite" },
-    { src: "/Tailwind.svg", name: "Tailwind CSS" },
+    { src: "/Tailwind.svg", name: "Tailwind" },
     { src: "/CPP.svg", name: "C++" },
 ];
 
@@ -31,7 +31,7 @@ const Skills = () => {
 
     const isMobile = useMobile();
     const radius = isMobile ? 140 : 230;
-    const spacingX = isMobile ? 50 : 90;
+    const spacingX = isMobile ? 50 : ref?.current?.innerWidth > 600 ? 65: 90;
     const spacingY = isMobile ? 60 : 100;
     const itemsPerRow = Math.ceil(skillSet.length / 2);
 
@@ -40,6 +40,13 @@ const Skills = () => {
     const curveFactor = useTransform(scrollYProgress, [0.2, 0.45], [0, 1]);
     const scale = useTransform(scrollYProgress, [0.4, 0.55], [0, 1]);
     const opacity = useTransform(scrollYProgress, [0.4, 0.55], [0.5, 1]);
+    useEffect(() => {
+        const handleScroll = (e)=>{
+
+        }
+    }, [])
+    
+    
     return (
         <section
             ref={ref}
@@ -108,13 +115,10 @@ const Skills = () => {
                                 />
                                 <motion.span
                                     initial={{ opacity: 0, y: 5 }}
-                                    animate={{ opacity: 0 }}
-                                    whileHover={{
-                                        opacity: isMobile ? 0 : 1,
-                                        y: 0,
-                                    }}
+                                    animate={{ opacity: 1 }}
+                                    
                                     transition={{ duration: 0.3 }}
-                                    className="absolute pt-[76px] text-sm text-center px-2 py-1 bg-background/0  text-foreground z-10"
+                                    className="absolute max-md:text-xs max-sm:pt-11 max-md:pt-12 pt-[76px] text-sm text-center px-2 py-1 bg-background/0  text-foreground z-10"
                                 >
                                     {skill.name}
                                 </motion.span>

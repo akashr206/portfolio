@@ -19,7 +19,7 @@ export default function Home() {
             <Hero />
             <Projects />
             <Skills />
-            <Education />
+            {/* <Education /> */}
             <Contact />
             <Footer />
             <div className="fixed bottom-0 left-0 w-full h-24 pointer-events-none z-10">
