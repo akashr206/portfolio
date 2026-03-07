@@ -52,7 +52,7 @@ const Navbar = () => {
                 </div>
 
                 <div className="hidden md:flex items-center gap-4">
-                    {["Home", "Projects", "Skills", "Education", "Contact"].map((nav) => {
+                    {["Home", "Projects", "Skills", "Contact"].map((nav) => {
                         const id = nav.toLowerCase();
                         console.log(activeSection);
                         
@@ -133,7 +133,7 @@ const Navbar = () => {
                 className="md:hidden absolute top-16 left-4 pb-4 pt-2 right-4 bg-card/90 backdrop-blur-sm mx-auto rounded-xl rounded-t-none shadow-lg overflow-hidden"
             >
                 <div className="p-2 flex flex-col gap-3">
-                    {["Home", "Projects", "Skills", "Education", "Contact"].map(
+                    {["Home", "Projects", "Skills", "Contact"].map(
                         (nav, index) => {
                             const id = nav.toLowerCase();
                             const isActive = id == activeSection;
