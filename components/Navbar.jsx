@@ -20,7 +20,7 @@ const Navbar = () => {
     const width = useTransform(
         scrollYProgress,
         [0, 0.05],
-        ["min(1024px, calc(100vw - 2rem))", "min(600px, calc(100vw - 2rem))"]
+        ["min(1024px, calc(100vw - 2rem))", "min(600px, calc(100vw - 2rem))"],
     );
 
     const scrollToSection = (id) => {
@@ -44,7 +44,7 @@ const Navbar = () => {
                 style={{ width }}
                 className={cn(
                     "flex mx-auto items-center h-12 border justify-between bg-card/70 backdrop-blur-sm p-4 relative",
-                    isMenuOpen ? "rounded-t-xl" : "rounded-full"
+                    isMenuOpen ? "rounded-t-xl" : "rounded-full",
                 )}
             >
                 <div className="flex items-center gap-2">
@@ -54,15 +54,14 @@ const Navbar = () => {
                 <div className="hidden md:flex items-center gap-4">
                     {["Home", "Projects", "Skills", "Contact"].map((nav) => {
                         const id = nav.toLowerCase();
-                        console.log(activeSection);
-                        
+
                         const isActive = id == activeSection;
                         return (
                             <span
                                 key={nav}
                                 className={cn(
                                     "text-sm font-light hover:text-primary flex items-center gap-1 transition-colors",
-                                    isActive ? "font-semibold" : ""
+                                    isActive ? "font-semibold" : "",
                                 )}
                             >
                                 {isActive && (
@@ -162,7 +161,7 @@ const Navbar = () => {
                                     <button
                                         className={cn(
                                             "cursor-pointer",
-                                            !isActive && "ml-3.5 font-light"
+                                            !isActive && "ml-3.5 font-light",
                                         )}
                                         onClick={() => {
                                             scrollToSection(id.toLowerCase());
@@ -173,7 +172,7 @@ const Navbar = () => {
                                     </button>
                                 </motion.div>
                             );
-                        }
+                        },
                     )}
                 </div>
             </motion.div>

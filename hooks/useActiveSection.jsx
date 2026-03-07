@@ -2,35 +2,64 @@ import { useEffect, useState } from "react";
 
 export const useActiveSection = (sectionIds) => {
     const [activeSection, setActiveSection] = useState("");
+    const sectionIdsStr = sectionIds.join(",");
+
     useEffect(() => {
+        const ids = sectionIdsStr.split(",");
+        const visibleSections = new Set();
+        const observedElements = new Set();
+
         const observer = new IntersectionObserver(
             (entries) => {
-                const intersecting = entries.filter(
-                    (entry) => entry.isIntersecting
-                );
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        visibleSections.add(entry.target.id);
+                    } else {
+                        visibleSections.delete(entry.target.id);
+                    }
+                });
 
-                if (intersecting.length > 0) {
-                    const visibleSection = sectionIds.find((id) =>
-                        intersecting.some((entry) => entry.target.id === id)
+                if (visibleSections.size > 0) {
+                    const visibleSection = ids.find((id) =>
+                        visibleSections.has(id),
                     );
-
                     setActiveSection(visibleSection || "");
-                } else {
-                    setActiveSection("");
                 }
             },
             {
-                rootMargin: "-50% 0px -50% 0px",
-            }
+                rootMargin: "-40% 0px -40% 0px",
+            },
         );
 
-        const elements = sectionIds
-            .map((id) => document.getElementById(id))
-            .filter(Boolean);
-        elements.forEach((el) => observer.observe(el));
+        const observeElements = () => {
+            ids.forEach((id) => {
+                const el = document.getElementById(id);
+                if (el && !observedElements.has(el)) {
+                    observer.observe(el);
+                    observedElements.add(el);
+                }
+            });
+        };
 
-        return () => observer.disconnect();
-    }, [sectionIds]);
+        // Try to observe immediately just in case
+        observeElements();
+
+        // Since elements might be added after a loading screen finishes,
+        // watch the DOM for newly added elements
+        const mutationObserver = new MutationObserver(() => {
+            observeElements();
+        });
+
+        mutationObserver.observe(document.body, {
+            childList: true,
+            subtree: true,
+        });
+
+        return () => {
+            observer.disconnect();
+            mutationObserver.disconnect();
+        };
+    }, [sectionIdsStr]);
 
     return activeSection;
 };

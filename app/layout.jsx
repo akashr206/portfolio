@@ -11,14 +11,15 @@ const poppins = Poppins({
 
 export const metadata = {
     title: "Akash R | Portfolio",
-    description: "I'm Akash! A tech enthusiast who loves coding, and creating cool projects. Check out my work and let’s connect!",
+    description:
+        "I'm Akash! A tech enthusiast who loves coding, and creating cool projects. Check out my work and let’s connect!",
 };
 
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
             <body
-                className={`${poppins.variable} h-[100vw] bg-background overflow-x-hidden antialiased`}
+                className={`${poppins.variable} min-h-screen bg-background overflow-x-hidden antialiased`}
             >
                 <ThemeProvider
                     attribute="class"
