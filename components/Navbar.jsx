@@ -1,189 +1,117 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
-import ThemeToggle from "./ui/ThemeToggle";
-import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { cn } from "@/lib/utils";
+import { Menu, X } from "lucide-react";
 
 const Navbar = () => {
-    const ref = useRef(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const sections = ["home", "projects", "skills", "education", "contact"];
     const activeSection = useActiveSection(sections);
 
-    const { scrollYProgress } = useScroll({
-        target: ref,
-        offset: ["start start", "end end"],
-    });
-
-    const width = useTransform(
-        scrollYProgress,
-        [0, 0.05],
-        ["min(1024px, calc(100vw - 2rem))", "min(600px, calc(100vw - 2rem))"],
-    );
+    useEffect(() => {
+        if (isMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isMenuOpen]);
 
     const scrollToSection = (id) => {
-        const element = document.getElementById(id);
-        if (element) {
-            element.scrollIntoView({ behavior: "smooth" });
-        }
-    };
-
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
-
-    const closeMenu = () => {
         setIsMenuOpen(false);
+        setTimeout(() => {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }, 300);
     };
+
+    const navLinks = ["Home", "Projects", "Skills", "Contact"];
 
     return (
-        <header className="fixed top-0 left-0 right-0 mx-auto py-4 z-50 w-screen px-4">
-            <motion.nav
-                style={{ width }}
-                className={cn(
-                    "flex mx-auto items-center h-12 border justify-between bg-card/70 backdrop-blur-sm p-4 relative",
-                    isMenuOpen ? "rounded-t-xl" : "rounded-full",
-                )}
-            >
-                <div className="flex items-center gap-2">
-                    <span className="text-lg font-semibold">AR</span>
+        <>
+            <header className="fixed top-0 left-0 right-0 z-40 w-full p-4 md:p-8 pointer-events-none flex justify-between items-start">
+                
+                <div 
+                    onClick={() => scrollToSection("home")}
+                    className="pointer-events-auto bg-fuchsia-500 text-zinc-950 font-black text-2xl md:text-3xl px-4 py-2 uppercase tracking-tighter cursor-pointer hover:bg-white hover:scale-105 transition-all shadow-xl"
+                >
+                    AR
                 </div>
 
-                <div className="hidden md:flex items-center gap-4">
-                    {["Home", "Projects", "Skills", "Contact"].map((nav) => {
-                        const id = nav.toLowerCase();
+                <button 
+                    onClick={() => setIsMenuOpen(true)}
+                    className="pointer-events-auto bg-zinc-950 text-white border-2 border-white/20 font-black text-xl md:text-2xl px-5 py-2 uppercase tracking-widest cursor-pointer hover:bg-white hover:text-zinc-950 transition-colors shadow-xl flex items-center gap-2"
+                >
+                    <Menu size={24} />
+                </button>
+            </header>
 
-                        const isActive = id == activeSection;
-                        return (
-                            <span
-                                key={nav}
-                                className={cn(
-                                    "text-sm font-light hover:text-primary flex items-center gap-1 transition-colors",
-                                    isActive ? "font-semibold" : "",
-                                )}
-                            >
-                                {isActive && (
-                                    <motion.span
-                                        initial={{ opacity: 0, scale: 0 }}
-                                        animate={{ opacity: 1, scale: 1 }}
-                                        className="h-2 w-2 bg-fuchsia-500 rounded-full mt-[3px]"
-                                    ></motion.span>
-                                )}
-                                <button
-                                    className="cursor-pointer"
-                                    onClick={() =>
-                                        scrollToSection(id.toLowerCase())
-                                    }
-                                >
-                                    {nav}
-                                </button>
-                            </span>
-                        );
-                    })}
-                </div>
-
-                <div className="md:hidden flex items-center gap-2">
-                    <ThemeToggle />
-                    <button
-                        onClick={toggleMenu}
-                        className="p-1 hover:bg-muted rounded-md transition-colors"
-                        aria-label="Toggle menu"
+            <AnimatePresence>
+                {isMenuOpen && (
+                    <motion.div
+                        initial={{ clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)" }}
+                        animate={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)" }}
+                        exit={{ clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)" }}
+                        transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
+                        className="fixed inset-0 z-50 bg-fuchsia-500 flex flex-col justify-center px-10 md:px-24 overflow-hidden"
                     >
-                        <motion.div
-                            animate={{
-                                alignItems: isMenuOpen ? "center" : "end",
-                                gap: isMenuOpen ? "0" : "6px",
-                            }}
-                            className="flex flex-col justify-center"
-                        >
-                            <motion.div
-                                animate={{
-                                    rotateZ: isMenuOpen ? "45deg" : "0deg",
-                                }}
-                                className="w-6 h-[2px] rounded-full bg-foreground"
-                            ></motion.div>
-                            <motion.div
-                                animate={{
-                                    rotateZ: isMenuOpen ? "-45deg" : "0deg",
-                                    width: isMenuOpen ? "24px" : "16px",
-                                }}
-                                className="w-4 h-[2px] rounded-full bg-foreground"
-                            ></motion.div>
-                        </motion.div>
-                    </button>
-                </div>
-
-                <div className="hidden md:block">
-                    <ThemeToggle />
-                </div>
-            </motion.nav>
-
-            <motion.div
-                initial={false}
-                animate={{
-                    opacity: isMenuOpen ? 1 : 0,
-                    y: isMenuOpen ? 0 : -10,
-                    pointerEvents: isMenuOpen ? "auto" : "none",
-                }}
-                style={{ width }}
-                transition={{ duration: 0.2 }}
-                className="md:hidden absolute top-16 left-4 pb-4 pt-2 right-4 bg-card/90 backdrop-blur-sm mx-auto rounded-xl rounded-t-none shadow-lg overflow-hidden"
-            >
-                <div className="p-2 flex flex-col gap-3">
-                    {["Home", "Projects", "Skills", "Contact"].map(
-                        (nav, index) => {
-                            const id = nav.toLowerCase();
-                            const isActive = id == activeSection;
-
-                            return (
-                                <motion.div
-                                    key={nav}
-                                    initial={false}
-                                    animate={{
-                                        opacity: isMenuOpen ? 1 : 0,
-                                        x: isMenuOpen ? 0 : -20,
-                                    }}
-                                    transition={{
-                                        duration: 0.2,
-                                        delay: isMenuOpen ? index * 0.05 : 0,
-                                    }}
-                                    className="flex items-center gap-1.5"
+                        <div className="absolute inset-0 pointer-events-none overflow-hidden flex flex-col justify-center opacity-10">
+                            {[...Array(3)].map((_, i) => (
+                                <motion.h1 
+                                    key={i}
+                                    initial={{ x: i % 2 === 0 ? "0%" : "-50%" }}
+                                    animate={{ x: i % 2 === 0 ? "-50%" : "0%" }}
+                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                                    className="text-[20vw] font-black uppercase whitespace-nowrap leading-none text-zinc-950"
                                 >
-                                    {isActive && (
-                                        <motion.div
-                                            initial={{ opacity: 0, scale: 0 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            className="h-2 w-2 shrink-0 bg-fuchsia-500 rounded-full mt-[3px]"
-                                        ></motion.div>
-                                    )}
-                                    <button
-                                        className={cn(
-                                            "cursor-pointer",
-                                            !isActive && "ml-3.5 font-light",
-                                        )}
-                                        onClick={() => {
-                                            scrollToSection(id.toLowerCase());
-                                            setIsMenuOpen(false);
-                                        }}
-                                    >
-                                        {nav}
-                                    </button>
-                                </motion.div>
-                            );
-                        },
-                    )}
-                </div>
-            </motion.div>
+                                    NAVIGATE • EXPLORE • CONNECT • 
+                                </motion.h1>
+                            ))}
+                        </div>
 
-            {isMenuOpen && (
-                <div
-                    className="md:hidden fixed inset-0 bg-black/20 backdrop-blur-sm -z-10"
-                    onClick={closeMenu}
-                />
-            )}
-        </header>
+                        <div className="absolute top-4 right-4 md:top-8 md:right-8 z-10">
+                            <button 
+                                onClick={() => setIsMenuOpen(false)}
+                                className="bg-zinc-950 text-white font-black text-xl md:text-2xl px-5 py-2 uppercase tracking-widest cursor-pointer hover:bg-white hover:text-zinc-950 transition-colors shadow-xl flex items-center gap-2"
+                            >
+                                <X size={24} />
+                            </button>
+                        </div>
+
+                        <div className="flex flex-col gap-2 md:gap-6 relative z-10">
+                            {navLinks.map((nav, index) => {
+                                const id = nav.toLowerCase();
+                                const isActive = id === activeSection;
+
+                                return (
+                                    <div key={nav} className="overflow-hidden">
+                                        <motion.button
+                                            initial={{ y: "100%" }}
+                                            animate={{ y: 0 }}
+                                            exit={{ y: "100%" }}
+                                            transition={{ duration: 0.5, delay: 0.2 + (index * 0.1), ease: [0.76, 0, 0.24, 1] }}
+                                            onClick={() => scrollToSection(id)}
+                                            className={cn(
+                                                "text-6xl md:text-[8rem] font-black uppercase tracking-tighter text-left transition-colors duration-300 leading-none",
+                                                isActive ? "text-white" : "text-zinc-950 hover:text-white"
+                                            )}
+                                        >
+                                            {nav}
+                                        </motion.button>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </>
     );
 };
 

@@ -1,12 +1,18 @@
-import { Poppins, Geist, Geist_Mono } from "next/font/google";
+import { Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Main from "@/components/Main";
 import Navbar from "@/components/Navbar";
-import { ThemeProvider } from "next-themes";
-const poppins = Poppins({
-    variable: "--font-poppins",
+
+const outfit = Outfit({
+    variable: "--font-outfit",
     subsets: ["latin"],
-    weight: ["400", "500", "600", "700"],
+    weight: ["300", "400", "500", "600", "700", "800"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+    variable: "--font-jetbrains-mono",
+    subsets: ["latin"],
+    weight: ["400", "500", "700"],
 });
 
 export const metadata = {
@@ -17,18 +23,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="en">
+        <html lang="en" className="dark">
             <body
-                className={`${poppins.variable} min-h-screen bg-background overflow-x-hidden antialiased`}
+                className={`${outfit.variable} ${jetbrainsMono.variable} font-sans min-h-screen bg-background overflow-x-hidden antialiased`}
             >
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="system"
-                    enableSystem
-                >
-                    <Navbar />
-                    <Main>{children}</Main>
-                </ThemeProvider>
+                <Navbar />
+                <Main>{children}</Main>
             </body>
         </html>
     );

@@ -1,6 +1,5 @@
 "use client";
-import { useRef, useEffect, useState } from "react";
-import { useTheme } from "next-themes";
+import { useRef, useEffect } from "react";
 
 const Squares = ({
   direction = "right",
@@ -15,15 +14,8 @@ const Squares = ({
   const numSquaresY = useRef(0);
   const gridOffset = useRef({ x: 0, y: 0 });
   const hoveredSquareRef = useRef(null);
-  const { theme } = useTheme();
-  const [gr1, setgr1] = useState(theme === "dark" ? "rgba(0, 0, 0, 0)" : "rgba(255, 255, 255, 0)");
-  const [gr2, setgr2] = useState(theme === "dark" ? "#060606" : "#fff");
-
-  useEffect(() => {
-    setgr1(theme === "dark" ? "rgba(0, 0, 0, 0)" : "rgba(255, 255, 255, 0)");
-    setgr2(theme === "dark" ? "#060606" : "#fff");
-  }, [theme])
-  
+  const gr1 = "rgba(0, 0, 0, 0)";
+  const gr2 = "#060606";
 
   useEffect(() => {
     const canvas = canvasRef.current;
