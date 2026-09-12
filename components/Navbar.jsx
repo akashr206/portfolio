@@ -39,7 +39,7 @@ const Navbar = () => {
                 
                 <div 
                     onClick={() => scrollToSection("home")}
-                    className="pointer-events-auto bg-fuchsia-500 text-zinc-950 font-black text-2xl md:text-3xl px-4 py-2 uppercase tracking-tighter cursor-pointer hover:bg-white hover:scale-105 transition-all shadow-xl"
+                    className="pointer-events-auto bg-fuchsia-500 text-zinc-200 hover:text-zinc-950 font-black text-2xl md:text-3xl px-4 py-2 uppercase tracking-tighter cursor-pointer hover:bg-white hover:scale-105 transition-all shadow-xl"
                 >
                     AR
                 </div>

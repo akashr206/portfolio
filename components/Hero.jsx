@@ -30,7 +30,7 @@ const Hero = () => {
             id="home"
             className="relative min-h-screen bg-zinc-950 flex flex-col justify-center overflow-hidden font-sans"
         >
-            <div className="absolute inset-0 flex flex-col justify-between opacity-10 pointer-events-none select-none overflow-hidden py-10">
+            <div className="absolute inset-0 flex flex-col justify-between opacity-25 pointer-events-none select-none overflow-hidden py-10">
                 {[...Array(5)].map((_, i) => (
                     <motion.div
                         key={i}
@@ -45,10 +45,10 @@ const Hero = () => {
                         }}
                     >
                         <h1
-                            className="text-[15vw] font-black text-transparent bg-clip-text stroke-white leading-none tracking-normal"
-                            style={{ WebkitTextStroke: "2px white" }}
+                            className="text-[25vh] font-black text-transparent bg-clip-text leading-none [-webkit-text-stroke:2px_white] tracking-[-2px]"
+                            // style={{ WebkitTextStroke: "2px white" }}
                         >
-                            AKASH R • DEVELOPER • DESIGNER • CREATOR •
+                            AKASH • DEVELOPER • DESIGNER • CREATOR •
                         </h1>
                     </motion.div>
                 ))}
@@ -59,17 +59,17 @@ const Hero = () => {
                     className="md:col-span-12 lg:col-span-8 bg-zinc-900 border-2 border-white p-10 md:p-16 flex flex-col justify-center relative overflow-hidden group"
                     initial={{ opacity: 0, x: -50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.8 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
                 >
                     <h2 className="text-xl md:text-3xl font-bold text-fuchsia-500 mb-2 uppercase tracking-widest">
                         Hello, Visitor
                     </h2>
-                    <h1 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tighter leading-none">
+                    <h1 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tight leading-none">
                         I am Akash R
                     </h1>
-                    <p className="text-xl text-zinc-400 font-mono max-w-xl">
-                        A passionate developer building smooth, creative, and
-                        meaningful experiences on the web.
+                    <p className="text-xl text-zinc-400 font-mono max-w-xl leading-relaxed">
+                        Building scalable backends, multi-agent AI, and
+                        interactive web apps. Also a LeetCode Knight.
                     </p>
 
                     <div
@@ -88,7 +88,7 @@ const Hero = () => {
                     className="md:col-span-6 lg:col-span-4 bg-fuchsia-500 text-zinc-950 p-10 border-2 border-fuchsia-500 flex items-center justify-center relative overflow-hidden cursor-pointer group"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 1 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
                 >
                     <motion.div
                         className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,_#000_3px,_transparent_3px)] bg-[size:24px_24px]"
@@ -149,7 +149,7 @@ const Hero = () => {
                     className="md:col-span-6 lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6"
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 1.2 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
                 >
                     <a
                         target="_blank"
