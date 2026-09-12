@@ -45,7 +45,7 @@ const Contact = () => {
 
     const x = useTransform(
         scrollYProgress,
-        [0.3, 0.65],
+        [0.3, 0.63],
         [0, -translateDistance]
     );
 
@@ -68,7 +68,7 @@ const Contact = () => {
             >
                 <motion.h1
                     ref={textRef}
-                    className="text-[120px] transition duration-200 ease-linear lg:text-[160px] xl:text-[200px] 2xl:text-[240px] font-semibold leading-tight whitespace-nowrap flex-shrink-0"
+                    className="text-[120px] font-black transition duration-200 ease-linear lg:text-[160px] xl:text-[200px] 2xl:text-[240px] leading-tight whitespace-nowrap uppercase flex-shrink-0"
                     style={{ x }}
                 >
                     Let's Connect and Build Something Awesome
@@ -76,7 +76,7 @@ const Contact = () => {
             </div>
 
             <div className="absolute w-[calc(100%-32px)] bottom-[50vh] translate-y-1/2">
-                <SendMessage> </SendMessage>
+                <SendMessage/>
             </div>
         </section>
     );
