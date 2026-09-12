@@ -1,6 +1,4 @@
 "use client";
-import Badge from "./ui/Badge";
-import { motion } from "framer-motion";
 import Project from "./Project";
 
 const projectsData = [
@@ -16,7 +14,7 @@ const projectsData = [
     },
     {
         id: 1,
-        title: "Yukthi - AI Course Generator",
+        title: "Yukthi",
         description:
             "An AI-powered course generator that can generate a structured, chapter-wise course on any topic.",
         tags: ["Next.js", "Firebase", "Gemini", "Shadcn UI"],
@@ -26,7 +24,7 @@ const projectsData = [
     },
     {
         id: 2,
-        title: "Mahira Fashions",
+        title: "Mahira",
         description:
             "An e-commerce platform focused on women's fashion, accessories, and more.",
         tags: ["React", "MongoDB", "Express.js", "Tailwind CSS"],
@@ -36,9 +34,9 @@ const projectsData = [
     },
     {
         id: 6,
-        title: "Arise (CodeFury)",
+        title: "Arise",
         description:
-            "A platform to preserve traditional Indian art forms by giving local artists exposure and connecting them with art lovers and buyers.",
+            "A platform to preserve traditional Indian art forms by giving local artists exposure.",
         tags: ["Next.js", "MongoDB", "Cloudinary", "Gemini API"],
         imageUrl: "/codefury.png",
         githubUrl: "https://github.com/akashr206/Arise-Codefury",
@@ -49,7 +47,7 @@ const projectsData = [
         title: "Bug Hunters",
         description:
             "A modern business website with smooth animations, professional UI, and clear call-to-actions for customers.",
-        tags: ["Next.js", "Tailwind CSS", "Framer Motion", "Type Script"],
+        tags: ["Next.js", "Tailwind CSS", "Framer Motion"],
         imageUrl: "/bug-hunters.png",
         githubUrl: "https://github.com/akashr206/Bussiness-Pro",
         liveUrl: "https://businessproo.vercel.app",
@@ -59,7 +57,7 @@ const projectsData = [
         title: "Peek Sort",
         description:
             "A sorting algorithm visualizer with an intuitive design, making learning interactive and engaging.",
-        tags: ["React", "Frontend", "Tailwind CSS", "Vite"],
+        tags: ["React", "Tailwind CSS", "Vite"],
         imageUrl: "/peek.png",
         githubUrl: "https://github.com/akashr206/PeekSort",
         liveUrl: "https://peek-sort.vercel.app",
@@ -70,29 +68,27 @@ const Projects = () => {
     return (
         <section
             id="projects"
-            className="flex min-h-screen max-md:flex-col max-md:py-16 p-4 md:p-8 lg:p-16"
+            className="w-full bg-zinc-950 flex flex-col relative pt-24 pb-48 z-10"
         >
-            <div className="md:sticky top-16 h-fit flex flex-col max-md:items-center max-md:mx-auto max-md:text-center max-w-md gap-1">
-                <Badge text={"Projects"} />
-                <h2 className="lg:text-3xl text-2xl font-semibold max-w-sm">
-                    Explore my{" "}
-                    <span className="text-fuchsia-500"> recent works</span>
+            <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-24 sticky top-12 z-0 flex justify-center">
+                <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-black uppercase tracking-tighter text-white opacity-10 text-center">
+                    PROJECTS
                 </h2>
-                <p>
-                    A collection of my personal and collaborative projects -
-                    exploring ideas, solving problems, and building things that
-                    matter.
-                </p>
+                <h3 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-black text-white text-center text-4xl md:text-6xl lg:text-[4rem]">
+                    PROJECTS
+                </h3>
             </div>
-            <div className="p-4 flex w-full">
-                <motion.div
-                    initial="hidden"
-                    className="grid ml-auto max-[1200px]:grid-cols-1  place-items-center grid-cols-2 gap-4 justify-center"
-                >
-                    {projectsData.map((project) => (
-                        <Project key={project.id} project={project} />
-                    ))}
-                </motion.div>
+
+            <div className="w-full max-w-5xl mx-auto px-6 md:px-12 flex flex-col gap-16 md:gap-[60vh] relative z-10 pb-16 md:pb-[20vh]">
+                {projectsData.map((project, index) => {
+                    return (
+                        <Project 
+                            key={project.id} 
+                            project={project} 
+                            index={index} 
+                        />
+                    );
+                })}
             </div>
         </section>
     );
