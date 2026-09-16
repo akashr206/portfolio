@@ -3,6 +3,26 @@ import Project from "./Project";
 
 const projectsData = [
     {
+        id: 7,
+        title: "Broadside AI",
+        description:
+            "A platform that transforms your ideas into beautiful, customized pitch decks and presentations in seconds.",
+        tags: ["Next.js", "MongoDB", "Mimo API", "Express.js"],
+        imageUrl: "/broadside.png",
+        githubUrl: null,
+        liveUrl: "https://broadside-ai.vercel.app",
+    },
+    {
+        id: 8,
+        title: "Distributed OJ",
+        description:
+            "A distributed online judge system that accepts code submissions, stores them in MongoDB, queues them in Redis, and processes them with a worker binary.",
+        tags: ["C++", "Redis", "Docker"],
+        imageUrl: "/doj.png",
+        githubUrl: "https://github.com/akashr206/distributed-oj",
+        liveUrl: "https://dist-oj.duckdns.org",
+    },
+    {
         id: 4,
         title: "Macroz",
         description:
@@ -29,7 +49,7 @@ const projectsData = [
             "An e-commerce platform focused on women's fashion, accessories, and more.",
         tags: ["React", "MongoDB", "Express.js", "Tailwind CSS"],
         imageUrl: "/mahira.png",
-        githubUrl: "https://github.com/akashr206/yukthi",
+        githubUrl: "https://github.com/akashr206/E_site",
         liveUrl: "https://mahira.vercel.app",
     },
     {
@@ -68,9 +88,9 @@ const Projects = () => {
     return (
         <section
             id="projects"
-            className="w-full bg-zinc-950 flex flex-col relative pt-24 pb-48 z-10"
+            className="w-full bg-transparent flex flex-col relative py-24 z-10"
         >
-            <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-24 sticky top-12 z-0 flex justify-center">
+            <div className="w-full max-w-7xl mx-auto px-6 md:px-12 mb-24 relative z-0 flex justify-center">
                 <h2 className="text-6xl md:text-8xl lg:text-[10rem] font-black uppercase tracking-tighter text-white opacity-10 text-center">
                     PROJECTS
                 </h2>
@@ -79,13 +99,13 @@ const Projects = () => {
                 </h3>
             </div>
 
-            <div className="w-full max-w-5xl mx-auto px-6 md:px-12 flex flex-col gap-16 md:gap-[60vh] relative z-10 pb-16 md:pb-[20vh]">
+            <div className="w-full max-w-5xl mx-auto px-6 md:px-12 flex flex-col gap-12 md:gap-[20vh] relative z-10 pb-16 md:pb-[20vh]">
                 {projectsData.map((project, index) => {
                     return (
-                        <Project 
-                            key={project.id} 
-                            project={project} 
-                            index={index} 
+                        <Project
+                            key={project.id}
+                            project={project}
+                            index={index}
                         />
                     );
                 })}

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, User, MessageSquare, Send, ArrowUpRight, Github, Linkedin } from "lucide-react";
+import { Mail, User, MessageSquare, ArrowUpRight, Github, Linkedin } from "lucide-react";
 import Beams from "./Beams/Beams";
 import { toast } from "sonner";
 
@@ -90,13 +90,13 @@ export default function SendMessage() {
                         </div>
                     </a>
 
-                    <a href="https://www.linkedin.com/in/akash-r-55496631b/" target="_blank" rel="noreferrer" className="flex items-center gap-4 group">
+                    <a href="https://www.linkedin.com/in/akashr206/" target="_blank" rel="noreferrer" className="flex items-center gap-4 group">
                         <div className="w-14 h-14 bg-zinc-900 border-2 border-white/10 flex items-center justify-center group-hover:bg-[#0A66C2] group-hover:border-[#0A66C2] transition-colors">
                             <Linkedin className="w-6 h-6 text-zinc-400 group-hover:text-white transition-colors" />
                         </div>
                         <div>
                             <p className="text-xs font-bold text-zinc-500 uppercase tracking-widest mb-1">LinkedIn</p>
-                            <p className="text-sm md:text-base font-mono text-zinc-300 group-hover:text-white transition-colors">akash-r-55496631b</p>
+                            <p className="text-sm md:text-base font-mono text-zinc-300 group-hover:text-white transition-colors">linkedin.com/in/akashr206/</p>
                         </div>
                     </a>
                 </div>

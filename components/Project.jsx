@@ -6,17 +6,17 @@ const Project = ({ project, index }) => {
 
     return (
         <div
-            style={{ 
-                '--md-top-offset': topOffset,
-                zIndex: index + 10 
+            style={{
+                "--md-top-offset": topOffset,
+                zIndex: index + 10,
             }}
             className="relative md:sticky top-auto md:top-[var(--md-top-offset)] w-full max-w-5xl mx-auto bg-zinc-950 border-2 border-white/20 shadow-none md:shadow-[0_-20px_40px_rgba(0,0,0,0.9)] overflow-hidden group flex flex-col transform origin-top transition-all duration-300"
         >
             <div className="w-full aspect-video relative overflow-hidden bg-zinc-900 border-b-2 border-white/20">
-                <img 
-                    src={project.imageUrl} 
-                    alt={project.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]" 
+                <img
+                    src={project.imageUrl}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]"
                 />
             </div>
 
@@ -26,22 +26,28 @@ const Project = ({ project, index }) => {
                         {project.title}
                     </h3>
                     <div className="flex items-center gap-4">
-                        <a 
-                            href={project.githubUrl} 
-                            target="_blank" 
-                            rel="noreferrer"
-                            className="flex items-center gap-2 px-4 py-3 md:px-6 md:py-3 bg-zinc-800 text-white hover:bg-white hover:text-zinc-950 transition-colors font-mono font-bold uppercase text-sm"
-                        >
-                            <Github size={18} /> <span className="hidden md:inline">CODE</span>
-                        </a>
-                        <a 
-                            href={project.liveUrl} 
-                            target="_blank" 
-                            rel="noreferrer"
-                            className="flex items-center gap-2 px-4 py-3 md:px-6 md:py-3 bg-fuchsia-500 text-zinc-950 hover:bg-white hover:text-zinc-950 transition-colors font-mono font-bold uppercase text-sm"
-                        >
-                            <ExternalLink size={18} /> <span className="hidden md:inline">LIVE</span>
-                        </a>
+                        {project.githubUrl && (
+                            <a
+                                href={project.githubUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="flex items-center gap-2 px-4 py-3 md:px-6 md:py-3 bg-zinc-800 text-white hover:bg-white hover:text-zinc-950 transition-colors font-mono font-bold uppercase text-sm"
+                            >
+                                <Github size={18} />{" "}
+                                <span className="hidden md:inline">CODE</span>
+                            </a>
+                        )}
+                        {project.liveUrl && (
+                            <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="flex items-center gap-2 px-4 py-3 md:px-6 md:py-3 bg-fuchsia-500 text-zinc-950 hover:bg-white hover:text-zinc-950 transition-colors font-mono font-bold uppercase text-sm"
+                            >
+                                <ExternalLink size={18} />{" "}
+                                <span className="hidden md:inline">LIVE</span>
+                            </a>
+                        )}
                     </div>
                 </div>
 
@@ -53,7 +59,10 @@ const Project = ({ project, index }) => {
                             </p>
                             <div className="flex flex-wrap gap-2">
                                 {project.tags.map((tag, i) => (
-                                    <span key={i} className="px-3 py-1 border border-white/20 bg-white/5 font-mono text-xs text-white uppercase shadow-[2px_2px_0px_rgba(255,255,255,0.2)]">
+                                    <span
+                                        key={i}
+                                        className="px-3 py-1 border border-white/20 bg-white/5 font-mono text-xs text-white uppercase shadow-[2px_2px_0px_rgba(255,255,255,0.2)]"
+                                    >
                                         {tag}
                                     </span>
                                 ))}

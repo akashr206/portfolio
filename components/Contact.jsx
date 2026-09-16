@@ -21,8 +21,6 @@ const Contact = () => {
         const calculateDistance = () => {
             if (textRef.current && containerRef.current) {
                 const textWidth = textRef.current.getBoundingClientRect().width;
-                const containerWidth =
-                    containerRef.current.getBoundingClientRect().width;
 
                 const overflowAmount = textWidth;
 
@@ -60,7 +58,7 @@ const Contact = () => {
         <section
             ref={ref}
             id="contact"
-            className="flex flex-col h-[360vh] relative px-4 py-12 md:py-32 lg:py-48"
+            className="flex flex-col h-[360vh] relative px-4 pb-24"
         >
             <div
                 ref={containerRef}
