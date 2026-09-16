@@ -33,7 +33,7 @@ const Hero = () => {
         setMagnetPos({ x: 0, y: 0 });
     };
 
-    const textString = "AKASH • DEVELOPER • DESIGNER • CREATOR •";
+    const textString = "AKASH • DEVELOPER • ENGINEER • PROBLEM SOLVER •";
 
     return (
         <section
@@ -44,7 +44,7 @@ const Hero = () => {
                 {[...Array(4)].map((_, i) => (
                     <DynamicMarquee
                         key={i}
-                        baseVelocity={i % 2 === 0 ? 1 : -1}
+                        baseVelocity={i % 2 === 0 ? -1 : 1}
                         pulseTrigger={pulseTrigger}
                     >
                         <h1 className="text-[25vh] font-black text-transparent bg-clip-text leading-none [-webkit-text-stroke:2px_white] tracking-[-2px]">
@@ -75,7 +75,7 @@ const Hero = () => {
                         Hello, Visitor
                     </h2>
                     <h1 className="text-4xl md:text-6xl font-black text-white mb-6 uppercase tracking-tight leading-none">
-                        I am Akash R
+                        I am <span className="text-fuchsia-500">Akash R</span>
                     </h1>
                     <p className="text-xl text-zinc-400 font-mono max-w-xl leading-relaxed">
                         Building scalable backends, multi-agent AI, and
