@@ -2,11 +2,19 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Github, Linkedin } from "lucide-react";
+import DynamicMarquee from "./DynamicMarquee";
 
 const Hero = () => {
     const boxRef = useRef(null);
     const [magnetPos, setMagnetPos] = useState({ x: 0, y: 0 });
     const [isHovered, setIsHovered] = useState(false);
+    const [pulseTrigger, setPulseTrigger] = useState(false);
+
+    useEffect(() => {
+        setPulseTrigger(true);
+        const timer = setTimeout(() => setPulseTrigger(false), 100);
+        return () => clearTimeout(timer);
+    }, []);
 
     const handleMouseMove = (e) => {
         if (!boxRef.current) return;
@@ -25,41 +33,43 @@ const Hero = () => {
         setMagnetPos({ x: 0, y: 0 });
     };
 
+    const textString = "AKASH • DEVELOPER • DESIGNER • CREATOR •";
+
     return (
         <section
             id="home"
-            className="relative min-h-screen bg-zinc-950 flex flex-col justify-center overflow-hidden font-sans"
+            className="relative min-h-screen bg-transparent flex flex-col justify-center overflow-hidden font-sans"
         >
-            <div className="absolute inset-0 flex flex-col justify-between opacity-25 pointer-events-none select-none overflow-hidden py-10">
-                {[...Array(5)].map((_, i) => (
-                    <motion.div
+            <div className="absolute inset-0 flex flex-col justify-between opacity-20 pointer-events-none select-none overflow-hidden py-10">
+                {[...Array(4)].map((_, i) => (
+                    <DynamicMarquee
                         key={i}
-                        className="whitespace-nowrap"
-                        animate={{
-                            x: i % 2 === 0 ? ["0%", "-50%"] : ["-50%", "0%"],
-                        }}
-                        transition={{
-                            duration: 40,
-                            repeat: Infinity,
-                            ease: "linear",
-                        }}
+                        baseVelocity={i % 2 === 0 ? 1 : -1}
+                        pulseTrigger={pulseTrigger}
                     >
-                        <h1
-                            className="text-[25vh] font-black text-transparent bg-clip-text leading-none [-webkit-text-stroke:2px_white] tracking-[-2px]"
-                            // style={{ WebkitTextStroke: "2px white" }}
-                        >
-                            AKASH • DEVELOPER • DESIGNER • CREATOR •
+                        <h1 className="text-[25vh] font-black text-transparent bg-clip-text leading-none [-webkit-text-stroke:2px_white] tracking-[-2px]">
+                            {textString}
                         </h1>
-                    </motion.div>
+                    </DynamicMarquee>
                 ))}
             </div>
 
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-12 gap-6 pt-20">
                 <motion.div
                     className="md:col-span-12 lg:col-span-8 bg-zinc-900 border-2 border-white p-10 md:p-16 flex flex-col justify-center relative overflow-hidden group"
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
+                    initial={{
+                        clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+                        opacity: 0,
+                    }}
+                    animate={{
+                        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+                        opacity: 1,
+                    }}
+                    transition={{
+                        duration: 1.2,
+                        delay: 0.2,
+                        ease: [0.22, 1, 0.36, 1],
+                    }}
                 >
                     <h2 className="text-xl md:text-3xl font-bold text-fuchsia-500 mb-2 uppercase tracking-widest">
                         Hello, Visitor
@@ -86,9 +96,19 @@ const Hero = () => {
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={handleMouseLeave}
                     className="md:col-span-6 lg:col-span-4 bg-fuchsia-500 text-zinc-950 p-10 border-2 border-fuchsia-500 flex items-center justify-center relative overflow-hidden cursor-pointer group"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
+                    initial={{
+                        clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+                        opacity: 0,
+                    }}
+                    animate={{
+                        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+                        opacity: 1,
+                    }}
+                    transition={{
+                        duration: 1.2,
+                        delay: 0.4,
+                        ease: [0.22, 1, 0.36, 1],
+                    }}
                 >
                     <motion.div
                         className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_center,_#000_3px,_transparent_3px)] bg-[size:24px_24px]"
@@ -147,9 +167,19 @@ const Hero = () => {
                 {/* Action buttons block */}
                 <motion.div
                     className="md:col-span-6 lg:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-6"
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
+                    initial={{
+                        clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0)",
+                        opacity: 0,
+                    }}
+                    animate={{
+                        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+                        opacity: 1,
+                    }}
+                    transition={{
+                        duration: 1.2,
+                        delay: 0.6,
+                        ease: [0.22, 1, 0.36, 1],
+                    }}
                 >
                     <a
                         target="_blank"
@@ -171,7 +201,7 @@ const Hero = () => {
                         </a>
                         <a
                             target="_blank"
-                            href="https://www.linkedin.com/in/akash-r-55496631b/"
+                            href="https://www.linkedin.com/in/akashr206/"
                             className="bg-zinc-900 text-white border-2 border-white flex items-center justify-center p-6 hover:bg-fuchsia-500 hover:border-fuchsia-500 hover:text-zinc-950 transition-colors"
                         >
                             <Linkedin className="w-10 h-10" />

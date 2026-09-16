@@ -8,10 +8,6 @@ export default function Footer() {
                     <h2 className="text-2xl font-bold text-fuchsia-500">
                         Akash R
                     </h2>
-                    <p className="text-sm text-muted-foreground max-w-sm">
-                        Crafting experiences with code. Always building, always
-                        learning.
-                    </p>
                     <div className="flex justify-center w-max gap-8">
                         <a
                             href="https://github.com/akashr206"
@@ -23,7 +19,7 @@ export default function Footer() {
                             <Github className="w-5 h-5  transition" />
                         </a>
                         <a
-                            href="https://www.linkedin.com/in/akash-r-55496631b/"
+                            href="https://www.linkedin.com/in/akashr206/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="p-2 rounded-md hover:bg-accent transition  text-foreground hover:text-fuchsia-400"

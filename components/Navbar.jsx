@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useActiveSection } from "@/hooks/useActiveSection";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
+import DynamicMarquee from "./DynamicMarquee";
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -63,15 +64,15 @@ const Navbar = () => {
                     >
                         <div className="absolute inset-0 pointer-events-none overflow-hidden flex flex-col justify-center opacity-10">
                             {[...Array(3)].map((_, i) => (
-                                <motion.h1 
-                                    key={i}
-                                    initial={{ x: i % 2 === 0 ? "0%" : "-50%" }}
-                                    animate={{ x: i % 2 === 0 ? "-50%" : "0%" }}
-                                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                                    className="text-[20vw] font-black uppercase whitespace-nowrap leading-none text-zinc-950"
+                                <DynamicMarquee 
+                                    key={i} 
+                                    baseVelocity={i % 2 === 0 ? 1 : -1}
+                                    pulseTrigger={isMenuOpen}
                                 >
-                                    NAVIGATE • EXPLORE • CONNECT • 
-                                </motion.h1>
+                                    <h1 className="text-[30vh] font-black uppercase whitespace-nowrap leading-none text-zinc-950">
+                                        NAVIGATE • EXPLORE • CONNECT • 
+                                    </h1>
+                                </DynamicMarquee>
                             ))}
                         </div>
 
